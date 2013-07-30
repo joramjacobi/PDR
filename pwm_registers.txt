@@ -1,0 +1,42 @@
+
+RAM locations
+; our current mode
+t1_ModeReg      alloc reg $10
+
+
+; Last read ADC value from channel X1
+t1_CurADC       alloc reg $11
+
+
+; Sum of last N ADC values
+t1_CurSum       alloc reg $12
+
+
+; Decrementing counter indicating # sums added to t1_CurSum
+t1_CurCount     alloc reg $13   
+
+
+; Last average of ADC's actually calculated
+; Bits 13-10 keep a count of the current average, which is reported
+; by the firmware
+t1_CurAvg       alloc reg $14   
+
+
+; This is the register that thread 3 reports when it's written to
+SensorData      alloc reg $16
+
+
+; our address is stored here so we can read it using read reg
+t1_SaveAddress  alloc reg $17
+
+
+; write to these registers to change the color
+t2_Red_Data     alloc reg $21
+t2_Green_Data   alloc reg $22
+t2_Blue_Data    alloc reg $23
+
+
+ROM locations
+$0BF0 - where we look up our address
+
+$0001 - Osc vector
